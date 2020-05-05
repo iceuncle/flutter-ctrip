@@ -17,10 +17,6 @@ class _HomePageState extends State<HomePage> {
 
   double appBarAlpha = 0;
 
-  final PageController _controller = PageController(
-    initialPage: 0,
-  );
-
   _onScroll(offset) {
     double alpha = offset / APPBAR_SCROLL_OFFSET;
     if (alpha < 0) {

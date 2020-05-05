@@ -27,13 +27,8 @@ class _TabNavigatorState extends State<TabNavigator> {
             _currentIndex = index;
           });
         },
-//        physics: NeverScrollableScrollPhysics(),  //设置不滑动
-        children: <Widget>[
-          HomePage(),
-          SearchPage(),
-          TravelPage(),
-          MyPage(),
-        ],
+        children: <Widget>[HomePage(), SearchPage(), TravelPage(), MyPage()],
+        physics: NeverScrollableScrollPhysics(),  //设置不滑动
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,

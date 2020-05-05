@@ -6,11 +6,6 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
-
-  final PageController _controller = PageController(
-    initialPage: 0,
-  );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

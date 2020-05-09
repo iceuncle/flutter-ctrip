@@ -1,5 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_ctrip/dao/home_dao.dart';
+import 'package:flutter_ctrip/widget/grid_nav.dart';
+import 'package:flutter_ctrip/widget/local_nav.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+
+import 'model/common_model.dart';
+import 'model/home_model.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
 
@@ -16,6 +24,14 @@ class _HomePageState extends State<HomePage> {
   ];
 
   double appBarAlpha = 0;
+  String resultString = '';
+  List<CommonModel> localNavList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
 
   _onScroll(offset) {
     double alpha = offset / APPBAR_SCROLL_OFFSET;
@@ -29,9 +45,28 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  loadData() async {
+//    HomeDao.fetch().then((result) {
+//      setState(() {
+//        resultString = json.encode(result);
+//      });
+//    }).catchError((e) {
+//      resultString = e.toString();
+//    });
+    try {
+      HomeModel model = await HomeDao.fetch();
+      setState(() {
+        localNavList = model.localNavList;
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff2f2f2),
       body: MediaQuery.removePadding(
           removeTop: true,
           context: context,
@@ -60,10 +95,14 @@ class _HomePageState extends State<HomePage> {
                           pagination: SwiperPagination(),
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
+                        child: LocalNav(localNavList: localNavList),
+                      ),
                       Container(
                         height: 800,
                         child: ListTile(
-                          title: Text('哈哈'),
+                          title: Text(resultString),
                         ),
                       )
                     ],

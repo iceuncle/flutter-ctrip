@@ -41,10 +41,9 @@ class LocalNav extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => WebView(
-                      url: model.url,
-                      statusBarColor: model.statusBarColor,
-                      hideAppBar: model.hideAppBar,
-                    )));
+                    url: model.url,
+                    statusBarColor: model.statusBarColor,
+                    hideAppBar: model.hideAppBar)));
       },
       child: Column(
         children: <Widget>[

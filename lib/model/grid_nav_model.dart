@@ -31,6 +31,7 @@ class GridNavModel {
 class GridNavItem {
   final String startColor;
   final String endColor;
+  final CommonModel mainItem;
   final CommonModel item1;
   final CommonModel item2;
   final CommonModel item3;
@@ -39,6 +40,7 @@ class GridNavItem {
   GridNavItem({
     this.startColor,
     this.endColor,
+    this.mainItem,
     this.item1,
     this.item2,
     this.item3,
@@ -49,6 +51,7 @@ class GridNavItem {
     return GridNavItem(
       startColor: json['startColor'],
       endColor: json['endColor'],
+      mainItem: CommonModel.fromJson(json['mainItem']),
       item1: CommonModel.fromJson(json['item1']),
       item2: CommonModel.fromJson(json['item2']),
       item3: CommonModel.fromJson(json['item3']),

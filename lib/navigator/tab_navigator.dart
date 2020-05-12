@@ -5,7 +5,6 @@ import '../pages/home_page.dart';
 import '../pages/my_page.dart';
 import '../pages/search_page.dart';
 
-
 class TabNavigator extends StatefulWidget {
   @override
   _TabNavigatorState createState() => _TabNavigatorState();
@@ -28,8 +27,13 @@ class _TabNavigatorState extends State<TabNavigator> {
             _currentIndex = index;
           });
         },
-        children: <Widget>[HomePage(), SearchPage(), TravelPage(), MyPage()],
-        physics: NeverScrollableScrollPhysics(),  //设置不滑动
+        children: <Widget>[
+          HomePage(),
+          SearchPage(hideLeft: true,),
+          TravelPage(),
+          MyPage(),
+        ],
+        physics: NeverScrollableScrollPhysics(), //设置不滑动
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,

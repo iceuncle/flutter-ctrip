@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/dao/home_dao.dart';
 import 'package:flutter_ctrip/model/grid_nav_model.dart';
 import 'package:flutter_ctrip/model/sales_box_model.dart';
+import 'package:flutter_ctrip/pages/search_page.dart';
 import 'package:flutter_ctrip/widget/grid_nav.dart';
 import 'package:flutter_ctrip/widget/loading_container.dart';
 import 'package:flutter_ctrip/widget/local_nav.dart';
@@ -197,7 +198,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _jumpToSearch() {}
+  _jumpToSearch() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return SearchPage(
+        hint: SEARCH_BAR_DEFAULT_TEXT,
+      );
+    }));
+  }
 
   _jumpToSpeak() {}
 }

@@ -5,6 +5,7 @@ import 'package:flutter_ctrip/dao/home_dao.dart';
 import 'package:flutter_ctrip/model/grid_nav_model.dart';
 import 'package:flutter_ctrip/model/sales_box_model.dart';
 import 'package:flutter_ctrip/pages/search_page.dart';
+import 'package:flutter_ctrip/pages/speak_page.dart';
 import 'package:flutter_ctrip/util/navigator_util.dart';
 import 'package:flutter_ctrip/widget/grid_nav.dart';
 import 'package:flutter_ctrip/widget/loading_container.dart';
@@ -205,5 +206,9 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 
-  _jumpToSpeak() {}
+  _jumpToSpeak() {
+    NavigatorUtil.push(
+        context,
+        SpeakPage());
+  }
 }

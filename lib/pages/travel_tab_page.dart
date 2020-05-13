@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ctrip/dao/travel_dao.dart';
 import 'package:flutter_ctrip/model/travel_model.dart';
+import 'package:flutter_ctrip/util/navigator_util.dart';
 import 'package:flutter_ctrip/widget/loading_container.dart';
 import 'package:flutter_ctrip/widget/webview.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -122,13 +123,12 @@ class _TravelItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (item.article.urls != null && item.article.urls.length > 0) {
-          Navigator.push(
+          NavigatorUtil.push(
               context,
-              MaterialPageRoute(
-                  builder: (context) => WebView(
-                        url: item.article.urls[0].h5Url,
-                        title: '详情',
-                      )));
+              WebView(
+                url: item.article.urls[0].h5Url,
+                title: '详情',
+              ));
         }
       },
       child: Card(

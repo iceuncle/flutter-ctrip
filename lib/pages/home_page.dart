@@ -5,6 +5,7 @@ import 'package:flutter_ctrip/dao/home_dao.dart';
 import 'package:flutter_ctrip/model/grid_nav_model.dart';
 import 'package:flutter_ctrip/model/sales_box_model.dart';
 import 'package:flutter_ctrip/pages/search_page.dart';
+import 'package:flutter_ctrip/util/navigator_util.dart';
 import 'package:flutter_ctrip/widget/grid_nav.dart';
 import 'package:flutter_ctrip/widget/loading_container.dart';
 import 'package:flutter_ctrip/widget/local_nav.dart';
@@ -181,14 +182,12 @@ class _HomePageState extends State<HomePage> {
           return GestureDetector(
             onTap: () {
               CommonModel model = bannerList[index];
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => WebView(
-                        url: model.url,
-                        statusBarColor: model.statusBarColor,
-                        hideAppBar: model.hideAppBar)),
-              );
+              NavigatorUtil.push(
+                  context,
+                  WebView(
+                      url: model.url,
+                      statusBarColor: model.statusBarColor,
+                      hideAppBar: model.hideAppBar));
             },
             child: Image.network(bannerList[index].icon, fit: BoxFit.fill),
           );
@@ -199,11 +198,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   _jumpToSearch() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return SearchPage(
-        hint: SEARCH_BAR_DEFAULT_TEXT,
-      );
-    }));
+    NavigatorUtil.push(
+        context,
+        SearchPage(
+          hint: SEARCH_BAR_DEFAULT_TEXT,
+        ));
   }
 
   _jumpToSpeak() {}
